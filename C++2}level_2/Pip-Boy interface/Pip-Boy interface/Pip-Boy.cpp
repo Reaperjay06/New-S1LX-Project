@@ -1,30 +1,10 @@
-//
-//  ContentView.swift
-//  Pip-Boy interface
-//
-//  Created by SA47 on 10/7/24.
-//
-
-import SwiftUI
-
-struct ContentView: View {
-    @Binding var document: Pip_Boy_interfaceDocument
-
-    var body: some View {
-        TextEditor(text: $document.text)
-    }
-}
-
-#Preview {
-    ContentView(document: .constant(Pip_Boy_interfaceDocument()))
-}
-#include; <SFML/Graphics.hpp>
+#include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
 #include <iostream>
 
 // Constants for Pip-Boy colors
-const; sf;::Color PIPBOY_BG_COLOR(3, 53, 0);      // Dark green
+const sf::Color PIPBOY_BG_COLOR(3, 53, 0);      // Dark green
 const sf::Color PIPBOY_TEXT_COLOR(10, 255, 0);  // Bright green
 const int WINDOW_WIDTH = 800;
 const int WINDOW_HEIGHT = 600;
@@ -56,29 +36,12 @@ int main() {
     statusText.setFillColor(PIPBOY_TEXT_COLOR);
     statusText.setPosition(100, 200);
 
-    // Inventory Button
-    sf::Text inventoryText;
-    inventoryText.setFont(font);
-    inventoryText.setString("Inventory");
-    inventoryText.setCharacterSize(32);
-    inventoryText.setFillColor(PIPBOY_TEXT_COLOR);
-    inventoryText.setPosition(100, 250);
+    // Add a rectangle shape for the button background
+    sf::RectangleShape statusButton(sf::Vector2f(200, 50));
+    statusButton.setFillColor(sf::Color::Transparent);
+    statusButton.setPosition(100, 200);
 
-    // Data Button
-    sf::Text dataText;
-    dataText.setFont(font);
-    dataText.setString("Data");
-    dataText.setCharacterSize(32);
-    dataText.setFillColor(PIPBOY_TEXT_COLOR);
-    dataText.setPosition(100, 300);
-
-    // Radio Button
-    sf::Text radioText;
-    radioText.setFont(font);
-    radioText.setString("Radio");
-    radioText.setCharacterSize(32);
-    radioText.setFillColor(PIPBOY_TEXT_COLOR);
-    radioText.setPosition(100, 350);
+    // ... Repeat the above steps for other buttons ...
 
     // Main loop
     while (window.isOpen()) {
@@ -86,6 +49,19 @@ int main() {
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed)
                 window.close();
+
+            // Check if the user clicked on a button
+            if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
+                sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+                sf::FloatRect statusButtonRect = statusButton.getGlobalBounds();
+
+                if (statusButtonRect.contains(mousePos.x, mousePos.y)) {
+                    // Handle the status button click
+                    std::cout << "Status button clicked!" << std::endl;
+                }
+
+                // ... Repeat the above steps for other buttons ...
+            }
         }
 
         // Clear the window with the Pip-Boy background color
@@ -93,10 +69,9 @@ int main() {
 
         // Draw UI elements
         window.draw(titleText);
+        window.draw(statusButton);
         window.draw(statusText);
-        window.draw(inventoryText);
-        window.draw(dataText);
-        window.draw(radioText);
+        // ... Repeat the above steps for other buttons ...
 
         // Display the content
         window.display();
