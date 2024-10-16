@@ -1,0 +1,75 @@
+(Me) so i have added the project to a folder name "Pip-Boy-Interface" do i add the SFML library to this folder?
+
+(Tabnine) 
+Yes, you can add the SFML library to the "Pip-Boy-Interface" folder. Here's how you can do it:
+
+1. Download the SFML library from https://www.sfml-dev.org/download.html. Choose the version that matches your operating system and compiler (GCC for Linux/macOS, MSVC for Windows).
+
+2. Extract the downloaded SFML package.
+
+3. Copy the "include" folder from the extracted SFML package into your "Pip-Boy-Interface" folder.
+
+4. Depending on your operating system and compiler, copy the appropriate SFML library files into your "Pip-Boy-Interface" folder. For example:
+
+   - For GCC on Linux/macOS: Copy the "lib" folder from the extracted SFML package into your "Pip-Boy-Interface" folder.
+   - For MSVC on Windows: Copy the "lib" folder from the extracted SFML package into your "Pip-Boy-Interface" folder. Then, copy the appropriate .dll files from the "bin" folder into your project's output directory (Debug or Release).
+
+5. Update your project's build settings to include the necessary include and library paths. For example, in CMake, you can add the following lines to your CMakeLists.txt file:
+
+```cmake
+cmake_minimum_required(VERSION 3.10)
+project(PipBoyInterface)
+
+set(CMAKE_CXX_STANDARD 11)
+
+include_directories(include)
+
+if(MSVC)
+    link_directories(lib)
+endif()
+
+add_executable(PipBoyInterface Pip-Boy.cpp)
+
+if(MSVC)
+    target_link_libraries(PipBoyInterface sfml-graphics-d sfml-window-d sfml-system-d)
+else()
+    target_link_libraries(PipBoyInterface sfml-graphics sfml-window sfml-system)
+endif()
+```
+
+Now, you should be able to build and run your SFML-based Pip-Boy interface project.
+
+(Me) so in my terminal how do i make SFML work on this project?
+
+(Tabnine)
+To create a directory for your project in the terminal, follow these steps:
+
+1. Open a terminal.
+
+2. Navigate to the parent directory where you want to create the new directory. For example, if you want to create a directory called "Pip-Boy-Interface" in your home directory, you would first navigate to your home directory:
+
+```bash
+cd ~
+```
+
+3. Then, create the new directory:
+
+```bash
+mkdir Pip-Boy-Interface
+```
+
+4. Verify that the directory was created:
+
+```bash
+ls
+```
+
+You should see "Pip-Boy-Interface" listed among the other directories in your home directory.
+
+5. Navigate to the new directory:
+
+```bash
+cd Pip-Boy-Interface
+```
+
+Now, you can start working on your project in this directory.
