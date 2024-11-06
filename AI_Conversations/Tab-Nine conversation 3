@@ -1,0 +1,153 @@
+so i have added the project to a folder name "Pip-Boy-Interface" do i add the SFML library to this folder?
+Tabnine
+Tabnine Protected
+Yes, you can add the SFML library to the "Pip-Boy-Interface" folder. Here's how you can do it:
+
+1.
+Download the SFML library from https://www.sfml-dev.org/download.html. Choose the version that matches your operating system and compiler (GCC for Linux/macOS, MSVC for Windows).
+2.
+Extract the downloaded SFML package.
+3.
+Copy the "include" folder from the extracted SFML package into your "Pip-Boy-Interface" folder.
+4.
+Depending on your operating system and compiler, copy the appropriate SFML library files into your "Pip-Boy-Interface" folder. For example:
+
+For GCC on Linux/macOS: Copy the "lib" folder from the extracted SFML package into your "Pip-Boy-Interface" folder.
+For MSVC on Windows: Copy the "lib" folder from the extracted SFML package into your "Pip-Boy-Interface" folder. Then, copy the appropriate .dll files from the "bin" folder into your project's output directory (Debug or Release).
+5.
+Update your project's build settings to include the necessary include and library paths. For example, in CMake, you can add the following lines to your CMakeLists.txt file:
+
+cmake_minimum_required(VERSION 3.10)
+project(PipBoyInterface)
+
+set(CMAKE_CXX_STANDARD 11)
+
+include_directories(include)
+
+if(MSVC)
+    link_directories(lib)
+endif()
+
+add_executable(PipBoyInterface Pip-Boy.cpp)
+
+if(MSVC)
+    target_link_libraries(PipBoyInterface sfml-graphics-d sfml-window-d sfml-system-d)
+else()
+    target_link_libraries(PipBoyInterface sfml-graphics sfml-window sfml-system)
+endif()
+Insert
+Copy
+New file
+
+Now, you should be able to build and run your SFML-based Pip-Boy interface project.
+References (1)
+1. 
+Pip-Boy.cpp - 0-80
+Copy
+
+Yo Ho My God!!!
+so in my terminal how do i make SFML work on this project?
+Tabnine
+Tabnine Protected
+To build and run your SFML-based Pip-Boy interface project using the terminal, follow these steps:
+
+1.
+Open a terminal and navigate to your "Pip-Boy-Interface" folder.
+2.
+If you're using CMake, create a build directory and generate the project files:
+
+mkdir build
+cd build
+cmake ..
+Run
+Insert
+Copy
+
+3.
+Build the project:
+
+make
+Run
+Insert
+Copy
+
+Or, if you're using MSVC:
+cmake --build . --config Debug
+Run
+Insert
+Copy
+
+4.
+Run the project:
+
+./PipBoyInterface  # For Linux/macOS
+Debug/PipBoyInterface.exe  # For Windows
+Run
+Insert
+Copy
+
+If you're not using CMake, you can compile and link the project manually using the appropriate compiler flags and libraries. For example, using GCC on Linux/macOS:
+g++ -std=c++11 -o PipBoyInterface Pip-Boy.cpp -Iinclude -Llib -lsfml-graphics -lsfml-window -lsfml-system
+Run
+Insert
+Copy
+
+And for MSVC on Windows:
+cl /EHsc /Iinclude Pip-Boy.cpp /link /LIBPATH:lib sfml-graphics-d.lib sfml-window-d.lib sfml-system-d.lib
+Run
+Insert
+Copy
+
+Then, run the project:
+./PipBoyInterface  # For Linux/macOS
+PipBoyInterface.exe  # For Windows
+Run
+Insert
+Copy
+
+Remember to replace "include" and "lib" with the appropriate paths to your SFML include and library directories.
+Copy
+
+Yo Ho My God!!!
+how do i make a directory for my project so the terminal can find it ?
+Tabnine
+Tabnine Protected
+To create a directory for your project in the terminal, follow these steps:
+
+1.
+Open a terminal.
+2.
+Navigate to the parent directory where you want to create the new directory. For example, if you want to create a directory called "Pip-Boy-Interface" in your home directory, you would first navigate to your home directory:
+
+cd ~
+Run
+Insert
+Copy
+
+3.
+Then, create the new directory:
+
+mkdir Pip-Boy-Interface
+Run
+Insert
+Copy
+
+4.
+Verify that the directory was created:
+
+ls
+Run
+Insert
+Copy
+
+You should see "Pip-Boy-Interface" listed among the other directories in your home directory.
+
+5.
+Navigate to the new directory:
+
+cd Pip-Boy-Interface
+Run
+Insert
+Copy
+
+Now, you can start working on your project in this directory.
