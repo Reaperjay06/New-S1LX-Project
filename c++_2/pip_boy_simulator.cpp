@@ -10,7 +10,7 @@ using namespace std;
 // Function prototypes
 void displayMainMenu();
 void handleJoystick(int &x, int &y);
-void displayRobot(const vector<vector<char>> &robot);
+void displayRobot(const vector<vector<char> > &robot);
 void togglePower(bool &powerState);
 void displaySettings();
 void optimizeExample();
@@ -27,7 +27,7 @@ int main() {
     int tabIndex = 0; // Tracks the current tab (menu option)
 
     // Simulated robot represented as a 2D grid (ASCII art)
-    vector<vector<char>> robot(5, vector<char>(5, '.'));
+    vector<vector<char> > robot(5, vector<char>(5, '.'));
 
     // Main program loop
     while (true) {
@@ -107,7 +107,7 @@ void handleJoystick(int &x, int &y) {
 }
 
 // Displays the robot as a 2D ASCII representation
-void displayRobot(const vector<vector<char>> &robot) {
+void displayRobot(const vector<vector<char> > &robot) {
     cout << "\n-- Hexapod Robot --\n";
     for (const auto &row : robot) {
         for (char cell : row) {
