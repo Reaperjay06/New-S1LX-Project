@@ -1,0 +1,47 @@
+﻿Specifically how you're incorporating sensors into your project per the requirement. 
+
+
+I plan on using the following sensors in these specific ways: 
+
+
+1. Heat sensor for body temp.
+2. Hygro Sensor for humidity measuring. 
+3. Accelerometer for measuring the speed of the user.
+4. Magnetometer as a compass.  
+
+
+
+
+
+
+________________
+
+
+Multi sensor integration: 
+(How will we ‘integrate’ the use of these sensors into the actual program/website running on the arduino. )
+-There will be a visual icon showing all the sensors data in a fun cartoonish way.
+
+
+
+
+________________
+
+
+Sensor data  processing & application: 
+(How will we be handling the data sent by these sensors)
+-The arduino will take the date, and then translate it onto the website. While the Raspberry pi is just used as a hub for the website. 
+
+
+
+
+________________
+
+
+Sensor interaction: 
+(How will the sensors themselves interact with the user?)
+- sensors like ‘heart rate monitor’ will have to be in physical contact with the user. Other sensors like the magnetometer and moisture sensor wont have such a need and will only need to be attached elsewhere on the pit-boy.
+
+
+
+
+________________
