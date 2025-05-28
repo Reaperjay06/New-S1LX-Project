@@ -1,0 +1,250 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Robot Dashboard</title>
+ <style>
+   body {
+     background-color: black;
+     color: #39ff14;
+     font-family: 'Courier New', Courier, monospace;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 100vh;
+     margin: 0;
+   }
+   .dashboard {
+     width: 800px;
+     height: 500px;
+     border: 2px solid #39ff14;
+     padding: 20px;
+     position: relative;
+   }
+   .battery {
+     display: flex;
+     align-items: center;
+     margin-bottom: 20px;
+   }
+   .battery-text {
+     margin-right: 10px;
+   }
+   .battery-container {
+     position: relative;
+     width: 160px;
+     height: 30px;
+     border: 2px solid #39ff14;
+     border-radius: 4px;
+     display: flex;
+     align-items: center;
+   }
+   .battery-tip {
+     width: 6px;
+     height: 12px;
+     background-color: #39ff14;
+     position: absolute;
+     right: -8px;
+     top: 50%;
+     transform: translateY(-50%);
+     border-radius: 2px;
+   }
+   .battery-level {
+     height: 100%;
+     background-color: #39ff14;
+     width: 70%;
+     border-radius: 2px 0 0 2px;
+   }
+   .panel {
+     position: absolute;
+     font-size: 18px;
+   }
+   .left-panel {
+     left: 20px;
+     top: 80px;
+   }
+   .right-panel {
+     right: 20px;
+     top: 80px;
+     text-align: right;
+   }
+   .center-panel {
+     position: absolute;
+     top: 120px;
+     left: 50%;
+     transform: translateX(-50%);
+     text-align: center;
+   }
+   .icon-box {
+     width: 40px;
+     height: 40px;
+     border: 2px solid #39ff14;
+     margin-bottom: 8px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+   }
+   .thermometer {
+     position: relative;
+     width: 6px;
+     height: 20px;
+     background-color: #39ff14;
+     border-radius: 3px;
+   }
+   .thermometer::after {
+     content: '';
+     position: absolute;
+     bottom: -7px;
+     left: 50%;
+     transform: translateX(-50%);
+     width: 12px;
+     height: 12px;
+     background-color: #39ff14;
+     border-radius: 50%;
+   }
+   .drop {
+     position: relative;
+     width: 16px;
+     height: 24px;
+     background-color: #39ff14;
+     clip-path: polygon(50% 0%, 100% 60%, 50% 90%, 0% 60%);
+   }
+   .drop::after {
+     content: '';
+     position: absolute;
+     bottom: -6px;
+     left: 50%;
+     transform: translateX(-50%);
+     width: 16px;
+     height: 16px;
+     background-color: #39ff14;
+     border-radius: 50%;
+   }
+   .speedometer {
+     width: 60px;
+     height: 30px;
+     border: 3px solid #39ff14;
+     border-bottom: none;
+     border-radius: 60px 60px 0 0;
+     margin: 0 auto 8px auto;
+     position: relative;
+   }
+   .speedometer::after {
+     content: '';
+     position: absolute;
+     bottom: 5px;
+     left: 50%;
+     width: 2px;
+     height: 15px;
+     background-color: #39ff14;
+     transform: translateX(-50%) rotate(-45deg);
+     transform-origin: bottom center;
+   }
+   .mountain {
+     position: relative;
+     width: 60px;
+     height: 30px;
+     margin: 0 auto 8px auto;
+   }
+   .mountain::before,
+   .mountain::after {
+     content: '';
+     position: absolute;
+     bottom: 0;
+     width: 0;
+     height: 0;
+     border-left: 14px solid transparent;
+     border-right: 14px solid transparent;
+     border-bottom: 20px solid #39ff14;
+   }
+   .mountain::before {
+     left: 20px;
+     z-index: 2;
+   }
+   .mountain::after {
+     left: 0px;
+     z-index: 1;
+   }
+   .robot-simple {
+     width: 100px;
+     height: 100px;
+     border: 2px solid #39ff14;
+     border-radius: 50%;
+     margin: auto;
+     position: relative;
+   }
+   .robot-face {
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     width: 80%;
+     height: 60%;
+   }
+   .robot-eye {
+     width: 10px;
+     height: 10px;
+     background-color: #39ff14;
+     border-radius: 50%;
+     position: absolute;
+     top: 20%;
+   }
+   .robot-eye.left {
+     left: 25%;
+   }
+   .robot-eye.right {
+     right: 25%;
+   }
+   .robot-mouth {
+     width: 30px;
+     height: 6px;
+     background-color: #39ff14;
+     border-radius: 3px;
+     position: absolute;
+     bottom: 20%;
+     left: 50%;
+     transform: translateX(-50%);
+   }
+ </style>
+</head>
+<body>
+ <div class="dashboard">
+   <div class="battery">
+     <div class="battery-text">BATTERY</div>
+     <div class="battery-container">
+       <div class="battery-level"></div>
+       <div class="battery-tip"></div>
+     </div>
+   </div>
+
+
+   <div class="panel left-panel">
+     <div class="icon-box"><div class="thermometer"></div></div>
+     <div>TEMPC<br>24°C</div>
+     <br>
+     <div class="icon-box"><div class="drop"></div></div>
+     <div>HUMIDITY<br>58%</div>
+   </div>
+
+
+   <div class="panel right-panel">
+     <div class="speedometer"></div>
+     <div>SPEED<br>2.3 m/s</div>
+     <br>
+     <div class="mountain"></div>
+     <div>DIRECTION<br>NE</div>
+   </div>
+
+
+   <div class="center-panel">
+     <div class="robot-simple">
+       <div class="robot-face">
+         <div class="robot-eye left"></div>
+         <div class="robot-eye right"></div>
+         <div class="robot-mouth"></div>
+       </div>
+     </div>
+   </div>
+ </div>
+</body>
+</html>

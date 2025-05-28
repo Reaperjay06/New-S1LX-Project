@@ -1,0 +1,12 @@
+﻿Think aloud session 1: 
+
+
+* How are we going to have the arduino wifi host the website? 
+I’m assuming that it’ll be just like how I am hosting on the laptop. Have the arduino wifi board launch the code creating the website. And then having the Raspberry pie just open the website in its google chrome browser.
+
+
+* I know that the screen is touchscreen but other than the website dedicated digital buttons how will we be using actual physical buttons in conjunction with the website?
+I plan on trying to figure out how to have some physical buttons communicating with the website. Although it will most definitely have to be wired directly to the Arduino itself instead of the raspberry pi. The raspberry pi's only main purpose is functionally as a display that the website can be shown on.
+
+
+* * * * * * *
